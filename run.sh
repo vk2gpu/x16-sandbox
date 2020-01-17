@@ -2,6 +2,6 @@
 
 make
 pushd ../x16-emulator
-./x16emu -prg ../testbed/main.prg -run -debug -gif vera.gif #080d #
+./x16emu -prg ../x16-sandbox/main.prg -run -debug -gif vera.gif #080d #
 
 popd
