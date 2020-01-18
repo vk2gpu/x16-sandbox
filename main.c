@@ -44,11 +44,11 @@ static void* KERNAL_ISR_HANDLER;
     __asm__ ("pla");                                \
     __asm__ ("jmp (_KERNAL_ISR_HANDLER)")
 
-#define vera_vset(addr) VERA.address = (addr) & 0xffff; VERA.address_hi = (((addr) | VERA_AUTO_INC_1) >> 16)
+#define vera_vset(addr) do { VERA.address = (addr) & 0xffff; VERA.address_hi = (((addr) | VERA_AUTO_INC_1) >> 16); } while(0)
 
-#define vera_write8(data) VERA.data0 = data
+#define vera_write8(data) do { VERA.data0 = (data); } while(0)
 
-#define vera_write16(data) VERA.data0 = data & 0xff; VERA.data0 = data >> 8;
+#define vera_write16(data) do { VERA.data0 = (data) & 0xff; VERA.data0 = (data) >> 8; } while(0)
 
 static void vera_write(const uint8_t* src, uint16_t num)
 {
